@@ -1,0 +1,93 @@
+src/components/ui/heading.test.tsx
+  s_a12a88c110d108::t_0e78d14da41383 26,33-38
+  s_a12a88c110d108::t_bfdcfffd8ff79a 1-25,27-32,39-40
+src/components/form/password-input.test.tsx
+  s_a12a88c110d108::t_0ec5929446860e 1-58
+src/components/ui/input.tsx
+  s_a12a88c110d108::t_f92e8e3482c644 3
+  s_a12a88c110d108::t_f17ff8d99ff850 1-2,12,16,19
+  s_a12a88c110d108::t_837f947bdafac6 4-10,13-15,17-18
+  s_a12a88c110d108::t_1f9c526e75407f 11
+src/components/ui/field.tsx
+  s_a12a88c110d108::t_123ab78d132132 1,3-4,7-8,16,20,34,38,47,51,69-70,85,94,98,111,115,124,128,139,143,151,171,179,188,192,196,201,204,211,214-215,218,230,244
+  s_a12a88c110d108::t_f92e8e3482c644 5
+  s_a12a88c110d108::t_aaf1d049999819 2,6,9-15,17-19,21-33,35-37,39-46,48-50,52-68,71-84,86-93,95-97,99-108,110,112-114,116-123,125-127,129-138,140-142,144-150,152,165-167,169,172-174,178,180-187,189-191,193-195,197-200,202-203,205-210,212-213,216-217,219-229,231-243
+  s_a12a88c110d108::t_f5d546e72a1251 153-164,168,170,175-177
+  s_a12a88c110d108::t_29ba5e2825c652 109
+src/components/ui/separator.tsx
+  s_a12a88c110d108::t_123ab78d132132 1,3,17,21,24
+  s_a12a88c110d108::t_f92e8e3482c644 4
+  s_a12a88c110d108::t_1f9c526e75407f 16
+  s_a12a88c110d108::t_aaf1d049999819 2,5-15,18-20,22-23
+src/components/ui/label.tsx
+  s_a12a88c110d108::t_aaf1d049999819 2,5-10,13-15,17-18
+  s_a12a88c110d108::t_f92e8e3482c644 4
+  s_a12a88c110d108::t_f3933fa09392c7 11
+  s_a12a88c110d108::t_123ab78d132132 1,3,12,16,19
+src/components/ui/heading.tsx
+  s_a12a88c110d108::t_a3e4980ac6b677 1-40
+src/app/layout.tsx
+  s_a12a88c110d108::t_d84dfa98eb519f 23-27
+  s_a12a88c110d108::t_37266c6befd807 1
+  s_a12a88c110d108::t_fba0d386061664 2,5,8-9,30
+src/components/form/text-field.tsx
+  s_a12a88c110d108::t_0b5d370f965f0a 9,21,29,44-50,54-58
+  s_a12a88c110d108::t_5b406644f46320 1-8,10-20,22-28,30-43,51-53,59-70
+src/components/ui/button.tsx
+  s_a12a88c110d108::t_1167b1fe4020e2 6
+  s_a12a88c110d108::t_e111b775a03073 13,15
+  s_a12a88c110d108::t_f92e8e3482c644 3
+  s_a12a88c110d108::t_ea759f9a7c03f8 19,21
+  h_22d2fe95cfac76 1-2,4-5,7-9,14,16-18,20,22-60
+  s_a12a88c110d108::t_52d5e5a88cfc53 10-12
+src/components/form/password-input.tsx
+  s_a12a88c110d108::t_155e6c0b723b53 1-48,50-55
+  s_a12a88c110d108::t_1f9c526e75407f 49
+src/components/ui/button.test.tsx
+  s_a12a88c110d108::t_5288c5fb8ca394 1-30
+src/components/form/text-field.test.tsx
+  s_a12a88c110d108::t_85244914173eeb 1-51
+src/components/ui/field-separator.test.tsx
+  s_a12a88c110d108::t_c6d93a4ec01fd2 1-19
+src/app/globals.css
+  s_a12a88c110d108::t_fc4cc18fe96243 71-72
+  s_a12a88c110d108::t_ea759f9a7c03f8 5-6
+  s_a12a88c110d108::t_99acf1247a7839 30
+  s_a12a88c110d108::t_dce51ce1b00be7 84
+  s_a12a88c110d108::t_5aa73e343462a5 86-88
+  s_a12a88c110d108::t_587379e7b9df6c 91
+  s_a12a88c110d108::t_817cea6df6f665 29
+  s_a12a88c110d108::t_654aef9d0766b5 85
+  h_22d2fe95cfac76 2-3,7,13-28,32-52,64-70,74-76,80-83,94-111,113-119
+  s_a12a88c110d108::t_c8eb66055c2bc8 53,56-61
+  s_a12a88c110d108::t_29ba5e2825c652 112
+  s_a12a88c110d108::t_4bcfe732157824 89-90
+  s_a12a88c110d108::t_491ab877501798 12
+  s_a12a88c110d108::t_64d8147666ac14 73
+  s_a12a88c110d108::t_8ecab94d29affb 77-79
+  s_a12a88c110d108::t_8a260614bbf249 31
+  s_a12a88c110d108::t_300355bbbe422b 92-93
+src/lib/utils.ts
+  s_a12a88c110d108::t_71a2033abf5d27 1-16
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.10",
+  "base_commit_sha": "34c0c4746b20b5ad322241697e9136650aa5e2f0",
+  "prompts": {},
+  "humans": {
+    "h_22d2fe95cfac76": {
+      "author": "Bartłomiej Matoga <bartek9105@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_a12a88c110d108": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7d935f63-7332-41a3-8d10-fe5ba42387a3",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Bartłomiej Matoga <bartek9105@gmail.com>"
+    }
+  }
+}
