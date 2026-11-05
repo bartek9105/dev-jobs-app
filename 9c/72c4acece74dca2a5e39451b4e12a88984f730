@@ -1,0 +1,12 @@
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.10",
+  "base_commit_sha": "9c72c4acece74dca2a5e39451b4e12a88984f730",
+  "prompts": {},
+  "humans": {
+    "h_22d2fe95cfac76": {
+      "author": "Bartłomiej Matoga <bartek9105@gmail.com>"
+    }
+  }
+}
