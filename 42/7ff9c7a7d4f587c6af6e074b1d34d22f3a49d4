@@ -1,0 +1,154 @@
+.gitignore
+  s_a12a88c110d108::t_bac4fa84251dfa 41-43
+src/i18n/client-messages.ts
+  s_a12a88c110d108::t_cdc3715a694b58 1-6,10-15
+  s_a12a88c110d108::t_a3db45d0aa3293 7-9
+src/i18n/client-messages.test.ts
+  s_a12a88c110d108::t_0d1b1fcfa426bf 1-16,20-26
+  s_a12a88c110d108::t_a3db45d0aa3293 17-19
+src/global.d.ts
+  s_a12a88c110d108::t_3add92c024aa46 1-10
+src/app/(auth)/sign-in/page.test.tsx
+  s_a12a88c110d108::t_6def5af78b340a 21-40
+  s_a12a88c110d108::t_baf6718590461e 1-20,41-49
+src/app/(auth)/layout.tsx
+  s_a12a88c110d108::t_08816e852ff3aa 11
+  s_a12a88c110d108::t_b058bd65079e20 1
+  s_a12a88c110d108::t_ba0720bc67f27d 12
+  h_22d2fe95cfac76 2-3,5-6,9,13-15
+  s_a12a88c110d108::t_56c2a2ac25291c 7-8
+  s_a12a88c110d108::t_00d95d1dd2b88f 10
+  s_a12a88c110d108::t_aa81697ce86ff6 4
+src/lib/merge-refs.ts
+  s_a12a88c110d108::t_6e001fa20d3696 1-13
+src/app/(auth)/_components/side-panel.tsx
+  s_a12a88c110d108::t_863a6680c277c1 1-3,14-31,33-38,43,45
+  h_22d2fe95cfac76 4-13,39-42,44,46-48
+  s_a12a88c110d108::t_a6d4843a5a7644 32
+src/app/(auth)/_components/side-panel.test.tsx
+  s_a12a88c110d108::t_3afd7a8eb8ad26 1-18
+src/components/ui/hint-link.tsx
+  s_a12a88c110d108::t_3efbd7575f750d 1-15,19-26
+  s_a12a88c110d108::t_e5ddb421131941 16-18
+src/components/ui/hint-link.test.tsx
+  s_a12a88c110d108::t_ba9a9498f5f7d6 1-19
+src/app/(auth)/sign-in/page.tsx
+  s_a12a88c110d108::t_b8d091948816b2 48
+  s_a12a88c110d108::t_37c65e0710e360 1
+  s_a12a88c110d108::t_f251d450f6466b 3,11-15,27-28,35,40-42
+  s_a12a88c110d108::t_0824608f206025 52
+  s_a12a88c110d108::t_d3172fbaa35062 9
+  s_a12a88c110d108::t_4553615c030e4f 8
+  s_a12a88c110d108::t_650c34b5659c17 2,17-19,23,29,31,36,38,46,49-51,55,64
+  s_a12a88c110d108::t_971d89021de51e 57-63
+  s_a12a88c110d108::t_20276dc9151160 39,43
+  s_a12a88c110d108::t_04991846b16a0a 22
+  h_22d2fe95cfac76 4-7,10,16,20-21,24-26,30,32-34,37,44-45,47,53-54,56,65-69
+src/lib/utils.ts
+  s_a12a88c110d108::t_a0050e4fa4ad3b 13
+src/app/globals.css
+  s_a12a88c110d108::t_4fbeca3dcc61bc 115
+  s_a12a88c110d108::t_1f26aa7f75b9d6 59-61
+  s_a12a88c110d108::t_35b13add084650 67-69
+  s_a12a88c110d108::t_95ea871f0954e2 70-84,89-90
+  s_a12a88c110d108::t_e8d82b705123ac 85-88
+src/components/logo.test.tsx
+  s_a12a88c110d108::t_71d1747b34ca1e 1-12
+src/app/(auth)/sign-up/page.tsx
+  s_a12a88c110d108::t_2df22a956fb8f1 1,3,6,11-15,27-28,35,47-60
+  s_a12a88c110d108::t_d85c3ff439957b 22,24
+  h_22d2fe95cfac76 4-5,8-10,16,20-21,25-26,30,32-34,37,39-46,61-63
+  s_a12a88c110d108::t_7ffa647f1b8fbd 2,17-19,23,29,31,36,38
+  s_a12a88c110d108::t_112d687fbce43d 7
+src/components/ui/button.tsx
+  s_a12a88c110d108::t_a0050e4fa4ad3b 6
+src/components/ui/label.tsx
+  s_a12a88c110d108::t_a0050e4fa4ad3b 11
+src/components/ui/heading.tsx
+  s_a12a88c110d108::t_08485ebddb36bd 7,9
+src/components/ui/field.tsx
+  s_a12a88c110d108::t_a0050e4fa4ad3b 170
+public/icons/google.svg
+  h_22d2fe95cfac76 1
+src/components/logo.tsx
+  s_a12a88c110d108::t_8bb19a44c80b4e 2
+  s_a12a88c110d108::t_6c9532c756f853 8
+  s_a12a88c110d108::t_501537927e1b05 10
+  s_a12a88c110d108::t_be47edd78e55f2 1,3-7,9,11-22
+src/components/ui/heading.test.tsx
+  s_a12a88c110d108::t_bb75bdb8801ef8 26-38
+package.json
+  s_a12a88c110d108::t_9a2a0f893a5250 54
+  s_a12a88c110d108::t_65333848b95740 28
+messages/en.json
+  h_22d2fe95cfac76 21
+  s_a12a88c110d108::t_27d0037bdf115c 1-20,25,29-30,34-35
+  s_a12a88c110d108::t_75fe101bee63e7 22-24,26-28,31-33
+src/i18n/request.ts
+  s_a12a88c110d108::t_2e92f3af7e75eb 1-12
+next.config.ts
+  s_a12a88c110d108::t_f39727ea34222c 26-28
+  s_a12a88c110d108::t_65ac094d0cb1f4 2
+src/components/form/password-input.tsx
+  s_a12a88c110d108::t_6d27fd594b08b0 4
+  s_a12a88c110d108::t_9d86bafa5a6338 18
+  s_a12a88c110d108::t_254d37b2f48cd2 48
+  s_a12a88c110d108::t_8411ab5cf76ada 9,11,13-17,39
+src/config/site.ts
+  s_a12a88c110d108::t_616da4ac5ca356 2
+src/app/layout.tsx
+  s_a12a88c110d108::t_971d0f3bc1d0e9 3-4,16-28,35-38,40-41,43-45
+  s_a12a88c110d108::t_9f2af491f67c08 6,42
+src/app/(auth)/forgot-password/page.tsx
+  s_a12a88c110d108::t_3d48445c9bf362 1-2,5-9,11-12,15
+  h_22d2fe95cfac76 3-4,10,13-14,16-18
+src/app/page.tsx
+  s_a12a88c110d108::t_5922bb31722fa1 1,5-6,12
+src/components/form/text-field.tsx
+  s_a12a88c110d108::t_06ccbabfd4d269 22
+  s_a12a88c110d108::t_0f6398b78925a3 9
+  s_a12a88c110d108::t_14c7434a1b4ebc 15
+  s_a12a88c110d108::t_64f63111abb26a 49-54,56-61,63,67-69,74
+  s_a12a88c110d108::t_299d3e54da4eff 62
+  s_a12a88c110d108::t_72c69c577b6efb 64
+  s_a12a88c110d108::t_27efd2a6b02233 1
+src/config/routes.ts
+  h_22d2fe95cfac76 7
+  s_a12a88c110d108::t_b8a4b9dd048f31 1-6,8
+src/test/render-with-intl.tsx
+  s_a12a88c110d108::t_25a3603dd951f2 1-14
+src/app/page.test.tsx
+  s_a12a88c110d108::t_5394ea0a2dbf0a 1,3,9,15-19
+  s_a12a88c110d108::t_616da4ac5ca356 12
+src/components/form/text-field.test.tsx
+  s_a12a88c110d108::t_e1df612013f34b 55-72
+  s_a12a88c110d108::t_4561db327c64d6 2,7-22
+src/i18n/config.ts
+  s_a12a88c110d108::t_6bfcf825a8051f 1-2
+src/components/form/password-input.test.tsx
+  s_a12a88c110d108::t_61ea168af4ac50 1,5,41,58
+  s_a12a88c110d108::t_d156b31a65acb3 3
+  s_a12a88c110d108::t_5feb419214bdb9 29-37
+  s_a12a88c110d108::t_a940b1be9689e5 11-13
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.10",
+  "base_commit_sha": "427ff9c7a7d4f587c6af6e074b1d34d22f3a49d4",
+  "prompts": {},
+  "humans": {
+    "h_22d2fe95cfac76": {
+      "author": "Bartłomiej Matoga <bartek9105@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_a12a88c110d108": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7d935f63-7332-41a3-8d10-fe5ba42387a3",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Bartłomiej Matoga <bartek9105@gmail.com>"
+    }
+  }
+}
