@@ -167,7 +167,7 @@ function FieldSeparator({
       data-slot="field-separator"
       data-content
       className={cn(
-        "flex items-center gap-3 text-xs leading-tight text-muted-foreground",
+        "flex items-center gap-3 text-sm leading-tight text-muted-foreground",
         className,
       )}
       {...props}

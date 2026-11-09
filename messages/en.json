@@ -1,0 +1,35 @@
+{
+  "Site": {
+    "description": "Job offers for software developers — filter by stack, salary and location."
+  },
+  "AuthFields": {
+    "emailLabel": "Email",
+    "emailPlaceholder": "Enter your email address",
+    "passwordLabel": "Password",
+    "passwordPlaceholder": "Enter your password"
+  },
+  "SignInPage": {
+    "title": "Sign in",
+    "forgotPassword": "Forgot password?",
+    "submit": "Sign in",
+    "noAccount": "Don't have an account? <link>Sign up</link>",
+    "or": "or",
+    "google": "Sign in with Google"
+  },
+  "SignUpPage": {
+    "title": "Sign up",
+    "submit": "Sign up",
+    "haveAccount": "Already have an account? <link>Sign in</link>",
+    "or": "or",
+    "google": "Sign up with Google"
+  },
+  "ForgotPasswordPage": {
+    "title": "Forgot password"
+  },
+  "PasswordInput": {
+    "show": "Show password"
+  },
+  "SidePanel": {
+    "pauseAnimation": "Pause animation"
+  }
+}

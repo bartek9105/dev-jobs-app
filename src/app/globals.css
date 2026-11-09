@@ -56,9 +56,38 @@
 /* Typography scale from Figma. Each token sets size, line height and weight together,
    so `text-heading-2` is one class. rem (not px) so text follows the user's font size. */
 @theme {
+  --text-heading-1: 1.75rem; /* 28px */
+  --text-heading-1--line-height: 2.125rem; /* 34px */
+  --text-heading-1--font-weight: 600;
   --text-heading-2: 1.125rem; /* 18px */
   --text-heading-2--line-height: 1.375rem; /* 22px */
   --text-heading-2--font-weight: 600;
+}
+
+/* inline: each bubble sets these --bubble-* variables itself. As a normal theme token this
+   would resolve on :root, where they don't exist, and the animation would silently be empty. */
+@theme inline {
+  --animate-bubble-drift: bubble-drift var(--bubble-duration) ease-in-out
+    var(--bubble-delay) infinite;
+
+  @keyframes bubble-drift {
+    0%,
+    100% {
+      transform: translate(0, 0);
+    }
+    25% {
+      transform: translate(var(--bubble-x), calc(var(--bubble-y) * -1));
+    }
+    50% {
+      transform: translate(calc(var(--bubble-x) * -0.5), var(--bubble-y));
+    }
+    75% {
+      transform: translate(
+        calc(var(--bubble-x) * -1),
+        calc(var(--bubble-y) * -0.5)
+      );
+    }
+  }
 }
 
 :root {
@@ -83,9 +112,7 @@
   --border: oklch(0.922 0 0);
   --input: #e2e8f0;
   --label: #4a5568;
-  /* Figma: rgba(74, 85, 104, 0.9), i.e. --label at 90%. Stored solid so it can't shift
-     on non-white backgrounds; 5.8:1 on white. */
-  --heading: #5c6677;
+  --heading: #1a202c;
   /* Figma: rgba(74, 85, 104, 0.85), i.e. --label at 85%, stored solid; 5.1:1 on white. */
   --outline-foreground: #656f7f;
   --separator: #e2e8f0;

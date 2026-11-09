@@ -4,9 +4,9 @@ import { cn } from "@/lib/utils";
 
 const headingVariants = cva("font-heading text-heading", {
   variants: {
-    // Add h1, h3… here as their Figma styles arrive, plus a matching
-    // --text-heading-* token in globals.css.
+    // Each variant needs a --text-heading-* token in globals.css, registered in lib/utils.ts.
     variant: {
+      h1: "text-heading-1",
       h2: "text-heading-2",
     },
   },

@@ -1,4 +1,4 @@
-import { useId, type ComponentProps } from "react";
+import { useId, type ComponentProps, type ReactNode } from "react";
 import {
   Field,
   FieldDescription,
@@ -6,23 +6,20 @@ import {
   FieldLabel,
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
+import { cn } from "@/lib/utils";
 import { PasswordInput } from "./password-input";
 
 type TextFieldProps = ComponentProps<typeof Input> & {
   label: string;
   name: string;
+  labelAction?: ReactNode;
   description?: string;
-  /** Messages for this field, e.g. from `z.flattenError(error).fieldErrors.email`. */
   errors?: string[];
 };
 
-/**
- * Label + input + optional description and errors, wired together for screen readers.
- * `type="password"` gets a show/hide toggle.
- * `className` positions the whole field; style the input itself in `ui/input.tsx`.
- */
 export function TextField({
   label,
+  labelAction,
   description,
   errors,
   id,
@@ -49,19 +46,32 @@ export function TextField({
   };
 
   return (
-    <Field data-invalid={isInvalid} className={className}>
+    // A grid lets labelAction sit on the label's row while coming after the input in the
+    // DOM, so Tab goes label → input → action instead of jumping to the link first.
+    <Field
+      data-invalid={isInvalid}
+      className={cn("grid grid-cols-[1fr_auto] items-center", className)}
+    >
       <FieldLabel htmlFor={inputId}>{label}</FieldLabel>
-      {type === "password" ? (
-        <PasswordInput {...sharedProps} />
-      ) : (
-        <Input {...sharedProps} type={type} />
+      <div className="col-span-2">
+        {type === "password" ? (
+          <PasswordInput {...sharedProps} />
+        ) : (
+          <Input {...sharedProps} type={type} />
+        )}
+      </div>
+      {labelAction && (
+        <div className="col-start-2 row-start-1 flex">{labelAction}</div>
       )}
       {description && (
-        <FieldDescription id={descriptionId}>{description}</FieldDescription>
+        <FieldDescription id={descriptionId} className="col-span-2">
+          {description}
+        </FieldDescription>
       )}
       {isInvalid && (
         <FieldError
           id={errorId}
+          className="col-span-2"
           errors={errors.map((message) => ({ message }))}
         />
       )}

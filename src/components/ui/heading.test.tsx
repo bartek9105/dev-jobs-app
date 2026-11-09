@@ -23,6 +23,19 @@ describe("Heading", () => {
     expect(heading).toHaveClass("text-heading-2");
   });
 
+  it("keeps its colour class with the h1 size", () => {
+    render(
+      <Heading level={1} variant="h1">
+        Sign in
+      </Heading>,
+    );
+
+    expect(screen.getByRole("heading", { level: 1 })).toHaveClass(
+      "text-heading",
+      "text-heading-1",
+    );
+  });
+
   it("keeps both its colour and size classes, plus extra ones", () => {
     render(
       <Heading level={2} className="mb-4">

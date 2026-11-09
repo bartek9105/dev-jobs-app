@@ -38,6 +38,9 @@ yarn-error.log*
 # local AI tooling settings
 .claude/
 
+# personal notes
+/NEXTJS-NOTES.md
+
 # vercel
 .vercel
 

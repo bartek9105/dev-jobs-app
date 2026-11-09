@@ -10,7 +10,7 @@ import { createCn } from "cn/config";
 export const cn = createCn({
   extend: {
     theme: {
-      text: ["heading-2"],
+      text: ["heading-1", "heading-2"],
     },
   },
 });
