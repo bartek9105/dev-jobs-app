@@ -1,0 +1,71 @@
+src/app/auth/confirm/route.ts
+  s_a12a88c110d108::t_c889c109efa667 1-28
+messages/en.json
+  s_a12a88c110d108::t_b64327f4b69324 30,32
+  s_a12a88c110d108::t_5b48e2f6c3fe5a 25-29,31,33-47
+supabase/templates/confirmation.html
+  s_a12a88c110d108::t_442ec386883842 1-2,7-10,14-16
+  s_a12a88c110d108::t_ce6a91c2404401 3-6,11-13
+src/app/(auth)/sign-up/page.tsx
+  s_a12a88c110d108::t_8e37535a298327 9
+  s_a12a88c110d108::t_ea9e90a52498fe 24
+package.json
+  s_a12a88c110d108::t_3d8105f1308f85 28,38
+supabase/config.toml
+  s_a12a88c110d108::t_2e7002246fd133 252-255
+src/features/auth/components/sign-up-form.tsx
+  s_a12a88c110d108::t_355ca0ea5e7d77 1-5,7,14-19,26-44,50-51,53-59,62-69,72-73,75,77-84
+  s_a12a88c110d108::t_352f997ab889e2 6,8-13,20-25,45-46,48-49,52,60-61,70-71,74,76
+  s_a12a88c110d108::t_074c49cf79c38f 47
+src/features/auth/components/sign-up-form.test.tsx
+  s_a12a88c110d108::t_abb4724230659c 1-12,14,22-26,51-52,55,68-75,77,81-88,94-100
+  s_a12a88c110d108::t_d71ecab785e698 13,15-21,27-50,53-54,56-67,76,78-80,89-93
+src/features/auth/sign-up-schema.test.ts
+  s_a12a88c110d108::t_a783ed50a9a4e1 17-23
+  s_a12a88c110d108::t_b94b783988fe2d 1-16,24-36
+src/features/auth/actions.test.ts
+  s_a12a88c110d108::t_53eb72a3b8dfb6 1-105
+src/app/(auth)/auth-error/page.tsx
+  s_a12a88c110d108::t_34720cdf09f774 1-24
+src/features/auth/sign-up-schema.ts
+  s_a12a88c110d108::t_c8794da3ab9cd5 10-12,14
+  s_a12a88c110d108::t_a0fc9464cd1d26 1-6,8-9,15-16,18-32
+  s_a12a88c110d108::t_28bc38391df02d 7,13,17
+src/features/auth/actions.ts
+  s_a12a88c110d108::t_d8afdcf2cb4077 1-63
+src/config/routes.ts
+  s_a12a88c110d108::t_32f5328019ad87 8
+src/app/auth/confirm/route.test.ts
+  s_a12a88c110d108::t_2d32153175bfd9 27-29
+  s_a12a88c110d108::t_2b8c6485ae9795 1-26,34-55,57-58
+  s_a12a88c110d108::t_e79ca11ee93649 30-33,56
+src/i18n/client-messages.ts
+  s_a12a88c110d108::t_e02405d37d955a 8,10
+src/lib/forms/use-action-form.ts
+  s_a12a88c110d108::t_225cd5d2e8f69d 27-29
+  s_a12a88c110d108::t_6095b75655eba2 13
+  s_a12a88c110d108::t_1df58dd5b47a42 53-56
+  s_a12a88c110d108::t_507880f467fcc7 66-72
+  s_a12a88c110d108::t_9d49aeb4e3d315 1-12,14-26,30-52,57-65,73-119
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.10",
+  "base_commit_sha": "aeeaf13be8b0dc9c135b802e9c759cfac0323647",
+  "prompts": {},
+  "humans": {
+    "h_22d2fe95cfac76": {
+      "author": "Bartłomiej Matoga <bartek9105@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_a12a88c110d108": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7d935f63-7332-41a3-8d10-fe5ba42387a3",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Bartłomiej Matoga <bartek9105@gmail.com>"
+    }
+  }
+}
