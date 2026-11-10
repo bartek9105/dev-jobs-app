@@ -5,7 +5,9 @@ import type { Messages } from "next-intl";
  * on the server. client-messages.test.ts fails if a "use client" file uses one not listed.
  */
 export const CLIENT_NAMESPACES = [
+  "AuthFields",
   "PasswordInput",
+  "SignUpForm",
 ] as const satisfies ReadonlyArray<keyof Messages>;
 
 export function pickClientMessages(messages: Messages) {
