@@ -4,7 +4,10 @@ import { renderWithIntl } from "@/test/render-with-intl";
 import SignInPage from "./page";
 
 // The real actions import the server-only Supabase client; the page only needs the form.
-vi.mock("@/features/auth/actions", () => ({ signIn: vi.fn() }));
+vi.mock("@/features/auth/actions", () => ({
+  signIn: vi.fn(),
+  signInWithGoogle: vi.fn(),
+}));
 
 it("renders its copy from the translations", () => {
   renderWithIntl(<SignInPage />);

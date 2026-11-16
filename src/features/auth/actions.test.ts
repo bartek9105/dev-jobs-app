@@ -1,14 +1,19 @@
 import { AuthApiError } from "@supabase/supabase-js";
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import { signIn, signUp } from "./actions";
+import { signIn, signInWithGoogle, signUp } from "./actions";
 
 const supabaseSignUp = vi.fn();
 const supabaseSignIn = vi.fn();
+const supabaseSignInWithOAuth = vi.fn();
 
 // The real server client reads Next's request cookies; here we only need its auth API.
 vi.mock("@/lib/supabase/server", () => ({
   createClient: async () => ({
-    auth: { signUp: supabaseSignUp, signInWithPassword: supabaseSignIn },
+    auth: {
+      signUp: supabaseSignUp,
+      signInWithPassword: supabaseSignIn,
+      signInWithOAuth: supabaseSignInWithOAuth,
+    },
   }),
 }));
 
@@ -207,6 +212,42 @@ describe("signIn action", () => {
     );
 
     expect(state).toMatchObject({ formError: "generic" });
+    expect(console.error).toHaveBeenCalled();
+  });
+});
+
+describe("signInWithGoogle action", () => {
+  beforeEach(() => {
+    supabaseSignInWithOAuth.mockReset();
+    vi.spyOn(console, "error").mockImplementation(() => {});
+  });
+
+  it("sends the user to Google, asking to come back to our callback", async () => {
+    supabaseSignInWithOAuth.mockResolvedValue({
+      data: { provider: "google", url: "https://accounts.google.com/o/oauth2" },
+      error: null,
+    });
+
+    await expect(signInWithGoogle()).rejects.toThrow(
+      /^REDIRECT https:\/\/accounts\.google\.com\/o\/oauth2$/,
+    );
+    expect(supabaseSignInWithOAuth).toHaveBeenCalledWith({
+      provider: "google",
+      options: { redirectTo: "http://localhost:3000/auth/callback" },
+    });
+  });
+
+  it("shows the error page and logs when the flow can't start", async () => {
+    supabaseSignInWithOAuth.mockResolvedValue({
+      data: { provider: "google", url: null },
+      error: new AuthApiError(
+        "Provider is not enabled",
+        400,
+        "validation_failed",
+      ),
+    });
+
+    await expect(signInWithGoogle()).rejects.toThrow(/^REDIRECT \/auth-error$/);
     expect(console.error).toHaveBeenCalled();
   });
 });

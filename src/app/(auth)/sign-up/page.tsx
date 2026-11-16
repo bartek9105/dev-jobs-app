@@ -1,11 +1,10 @@
-import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
-import { Button } from "@/components/ui/button";
 import { FieldSeparator } from "@/components/ui/field";
 import { Heading } from "@/components/ui/heading";
 import { HintLink } from "@/components/ui/hint-link";
 import { ROUTES } from "@/config/routes";
+import { GoogleSignInButton } from "@/features/auth/components/google-sign-in-button/google-sign-in-button";
 import { SignUpForm } from "@/features/auth/components/sign-up-form/sign-up-form";
 
 export async function generateMetadata() {
@@ -30,16 +29,10 @@ export default function SignUpPage() {
 
       <div className="flex flex-col gap-4">
         <FieldSeparator>{t("or")}</FieldSeparator>
-        <Button variant="outline" className="w-full">
-          <Image
-            src="/icons/google.svg"
-            alt=""
-            width={16}
-            height={16}
-            data-icon="inline-start"
-          />
-          {t("google")}
-        </Button>
+        <GoogleSignInButton
+          label={t("google")}
+          pendingLabel={t("googlePending")}
+        />
       </div>
     </>
   );

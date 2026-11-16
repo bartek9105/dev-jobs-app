@@ -18,7 +18,7 @@ export default function AuthErrorPage() {
         {t("title")}
       </Heading>
       <p className="mb-6 text-sm text-muted-foreground">{t("description")}</p>
-      <HintLink href={ROUTES.signUp}>{t("action")}</HintLink>
+      <HintLink href={ROUTES.signIn}>{t("action")}</HintLink>
     </>
   );
 }

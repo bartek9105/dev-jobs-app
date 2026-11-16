@@ -24,7 +24,8 @@
     "title": "Sign in",
     "noAccount": "Don't have an account? <link>Sign up</link>",
     "or": "or",
-    "google": "Sign in with Google"
+    "google": "Sign in with Google",
+    "googlePending": "Redirecting to Google…"
   },
   "SignInForm": {
     "submit": "Sign in",
@@ -35,7 +36,8 @@
     "title": "Sign up",
     "haveAccount": "Already have an account? <link>Sign in</link>",
     "or": "or",
-    "google": "Sign up with Google"
+    "google": "Sign up with Google",
+    "googlePending": "Redirecting to Google…"
   },
   "SignUpForm": {
     "submit": "Sign up",
@@ -47,9 +49,9 @@
     }
   },
   "AuthErrorPage": {
-    "title": "This link doesn't work",
-    "description": "It may have expired or already been used. Sign up again to get a new one.",
-    "action": "Back to sign up"
+    "title": "Something went wrong",
+    "description": "The link may have expired or already been used, or sign-in with Google was cancelled. Please try again.",
+    "action": "Back to sign in"
   },
   "ForgotPasswordPage": {
     "title": "Forgot password"

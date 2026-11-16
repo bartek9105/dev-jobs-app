@@ -1,6 +1,7 @@
 "use server";
 
 import { isAuthApiError } from "@supabase/supabase-js";
+import type { Route } from "next";
 import { redirect } from "next/navigation";
 import { ROUTES } from "@/config/routes";
 import { validatedAction } from "@/lib/forms/validated-action";
@@ -8,6 +9,7 @@ import { createClient } from "@/lib/supabase/server";
 import type { AuthErrorKey } from "./auth-errors";
 import { signInSchema, type SignInState } from "./sign-in-schema";
 import { signUpSchema, type SignUpState } from "./sign-up-schema";
+import { clientEnv } from "@/lib/env/client";
 
 const signUpErrorKeys: Partial<Record<string, AuthErrorKey>> = {
   weak_password: "weakPassword",
@@ -73,3 +75,31 @@ export const signIn = validatedAction(
     redirect(ROUTES.home);
   },
 );
+
+/**
+ * Signs a user in, or up, with Google. Supabase returns Google's consent URL and stores the
+ * PKCE code verifier in a cookie (which only a Server Action or Route Handler can write);
+ * Google then sends the user back via Supabase to our /auth/callback route.
+ */
+export const signInWithGoogle = async () => {
+  const supabase = await createClient();
+
+  const { data, error } = await supabase.auth.signInWithOAuth({
+    provider: "google",
+    options: {
+      // Must exactly match an entry in Supabase's redirect allow list.
+      redirectTo: new URL(
+        ROUTES.authCallback,
+        clientEnv.NEXT_PUBLIC_SITE_URL,
+      ).toString(),
+    },
+  });
+
+  if (error || !data.url) {
+    console.error("Google sign-in failed to start", error);
+    redirect(ROUTES.authError);
+  }
+
+  // Google's consent page: an external URL, which typedRoutes (our own routes only) can't check.
+  redirect(data.url as Route);
+};
