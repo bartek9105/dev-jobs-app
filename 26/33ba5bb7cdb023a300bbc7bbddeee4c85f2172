@@ -1,0 +1,78 @@
+src/features/auth/auth-errors.ts
+  s_a12a88c110d108::t_59f762ef0d6c03 1-20
+src/lib/forms/validated-action.test.ts
+  s_a12a88c110d108::t_4573761f54cf89 1-68
+src/app/(auth)/sign-in/page.test.tsx
+  s_a12a88c110d108::t_4350284163d61d 2,6-7
+src/i18n/client-messages.ts
+  s_a12a88c110d108::t_6b9ccf28ed3288 8
+  s_a12a88c110d108::t_68c219025f81c6 11
+src/app/(auth)/sign-in/page.tsx
+  h_22d2fe95cfac76 9,24
+src/app/(auth)/sign-up/page.tsx
+  h_22d2fe95cfac76 9
+messages/en.json
+  s_a12a88c110d108::t_31bf2d62b53be1 11-22,32
+  h_22d2fe95cfac76 29-30,33
+  s_a12a88c110d108::t_52de7ca9f0afdc 31
+src/features/auth/components/sign-in-form/sign-in-form.test.tsx
+  s_a12a88c110d108::t_272da519e1158c 1-59,81
+  s_a12a88c110d108::t_dd6e98a4b6275f 60-80
+src/features/auth/actions.test.ts
+  s_a12a88c110d108::t_dd41b569e92060 3,6,10-19
+  s_a12a88c110d108::t_abeaa46f4aeb79 115-212
+src/features/auth/components/sign-in-form/sign-in-form.tsx
+  s_a12a88c110d108::t_3b403b42140ff1 32-33
+  h_22d2fe95cfac76 1-2,4-5,8,16-21,23,25-31,35-50,52-54,60-63,65,67-74
+  s_a12a88c110d108::t_8286ff03894c78 10,22,24,34,64,66
+  s_a12a88c110d108::t_341c825b6a273e 57
+  s_a12a88c110d108::t_5abf234840e6e1 3,6-7,9,11-15,51,55-56,58-59
+src/features/auth/components/sign-up-form/sign-up-form.test.tsx
+  s_a12a88c110d108::t_cbf621dc1316c3 5,9
+  s_a12a88c110d108::t_9a93e3ebc9e22d 34
+src/lib/forms/use-action-form.ts
+  s_a12a88c110d108::t_2c0f446cc6fd96 81-88,91
+  s_a12a88c110d108::t_c59307192c531f 6
+  s_a12a88c110d108::t_d3823595f26a44 22,25
+  s_a12a88c110d108::t_fe89c83e06fd4c 105
+  s_a12a88c110d108::t_14fd23cfb626d7 100
+src/features/auth/sign-up-schema.ts
+  s_a12a88c110d108::t_91cb41d57179ca 12-14,17-19,26
+  s_a12a88c110d108::t_3b403b42140ff1 2-6
+src/features/auth/sign-in-schema.ts
+  s_a12a88c110d108::t_3b403b42140ff1 2-6
+  s_a12a88c110d108::t_68b23bd2e51fca 14-16,22
+  s_a12a88c110d108::t_87442a3e2268c2 1,7-13,17-21
+src/lib/forms/validated-action.ts
+  s_a12a88c110d108::t_3b403b42140ff1 18-21
+  s_a12a88c110d108::t_e052bbf6286f98 1-17,22-34
+src/features/auth/actions.ts
+  s_a12a88c110d108::t_86acfa00c9869c 6,8-10,12,19-27,30-75
+  s_a12a88c110d108::t_f0eeb9bed69d36 4-5
+src/features/auth/components/sign-up-form/sign-up-form.tsx
+  s_a12a88c110d108::t_7e85312639e2f5 8,20,22,50,76,78
+  h_22d2fe95cfac76 7,21
+  s_a12a88c110d108::t_6a38f3ad46ede3 13
+  s_a12a88c110d108::t_b072bca822bdae 49
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.10",
+  "base_commit_sha": "2633ba5bb7cdb023a300bbc7bbddeee4c85f2172",
+  "prompts": {},
+  "humans": {
+    "h_22d2fe95cfac76": {
+      "author": "Bartłomiej Matoga <bartek9105@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_a12a88c110d108": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7d935f63-7332-41a3-8d10-fe5ba42387a3",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Bartłomiej Matoga <bartek9105@gmail.com>"
+    }
+  }
+}
