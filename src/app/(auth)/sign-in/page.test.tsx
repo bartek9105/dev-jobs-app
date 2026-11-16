@@ -1,7 +1,10 @@
 import { screen } from "@testing-library/react";
-import { expect, it } from "vitest";
+import { expect, it, vi } from "vitest";
 import { renderWithIntl } from "@/test/render-with-intl";
 import SignInPage from "./page";
+
+// The real actions import the server-only Supabase client; the page only needs the form.
+vi.mock("@/features/auth/actions", () => ({ signIn: vi.fn() }));
 
 it("renders its copy from the translations", () => {
   renderWithIntl(<SignInPage />);

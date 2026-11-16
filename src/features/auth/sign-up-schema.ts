@@ -1,32 +1,27 @@
-import type { Messages } from "next-intl";
 import { z } from "zod";
-
-export type SignUpErrorKey = keyof Messages["SignUpForm"]["errors"];
-
-const error = (key: SignUpErrorKey) => ({ error: key });
-const required = (key: SignUpErrorKey) => ({ error: key, abort: true });
+import {
+  authError,
+  requiredAuthError,
+  type AuthFormError,
+} from "./auth-errors";
 
 export const signUpSchema = z.object({
   email: z
     .string()
     .trim()
-    .min(1, required("emailRequired"))
-    .pipe(z.email(error("emailInvalid"))),
+    .min(1, requiredAuthError("emailRequired"))
+    .pipe(z.email(authError("emailInvalid"))),
+  // 72 is bcrypt's limit: Supabase would silently ignore anything longer.
   password: z
     .string()
-    .min(1, required("passwordRequired"))
-    .min(8, error("passwordTooShort"))
-    .max(72, error("passwordTooLong")),
+    .min(1, requiredAuthError("passwordRequired"))
+    .min(8, authError("passwordTooShort"))
+    .max(72, authError("passwordTooLong")),
 });
 
 export type SignUpInput = z.infer<typeof signUpSchema>;
 
 export type SignUpState =
   | { status: "idle" }
-  | {
-      status: "error";
-      email: string;
-      fieldErrors?: Partial<Record<keyof SignUpInput, SignUpErrorKey[]>>;
-      formError?: SignUpErrorKey;
-    }
+  | AuthFormError<keyof SignUpInput>
   | { status: "success"; email: string };

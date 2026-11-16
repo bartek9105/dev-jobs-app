@@ -6,7 +6,7 @@ import { FieldSeparator } from "@/components/ui/field";
 import { Heading } from "@/components/ui/heading";
 import { HintLink } from "@/components/ui/hint-link";
 import { ROUTES } from "@/config/routes";
-import { SignUpForm } from "@/features/auth/components/sign-up-form";
+import { SignUpForm } from "@/features/auth/components/sign-up-form/sign-up-form";
 
 export async function generateMetadata() {
   const t = await getTranslations("SignUpPage");

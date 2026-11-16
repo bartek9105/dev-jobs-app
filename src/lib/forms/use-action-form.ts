@@ -3,6 +3,7 @@ import {
   startTransition,
   useActionState,
   useMemo,
+  useState,
   useSyncExternalStore,
 } from "react";
 import {
@@ -18,7 +19,10 @@ import type { z } from "zod";
 export type FormActionState = {
   status: string;
   fieldErrors?: Partial<Record<string, string[]>>;
+  formError?: string;
 };
+
+type FormErrorOf<TState> = TState extends { formError?: infer E } ? E : never;
 
 type UseActionFormOptions<
   TSchema extends z.ZodType<FieldValues, FieldValues>,
@@ -74,8 +78,17 @@ export function useActionForm<
     errors: serverErrors,
   });
 
+  // A form-level error (e.g. "Incorrect email or password") hides once the user edits the
+  // form, and while the next submission is running; each submit starts fresh.
+  const [isFormErrorDismissed, setIsFormErrorDismissed] = useState(false);
+  const formError =
+    isFormErrorDismissed || isPending
+      ? undefined
+      : (state.formError as FormErrorOf<TState> | undefined);
+
   const onSubmit = form.handleSubmit((_values, event) => {
     const formData = new FormData(event?.target as HTMLFormElement);
+    setIsFormErrorDismissed(false);
     startTransition(() => formAction(formData));
   });
 
@@ -84,10 +97,12 @@ export function useActionForm<
   return {
     form,
     state,
+    formError,
     isPending,
     formProps: {
       action: formAction,
       onSubmit,
+      onChange: () => setIsFormErrorDismissed(true),
       // Native validation until hydration, RHF's after. Toggling it this way avoids a
       // hydration mismatch, since the first client render matches the server's.
       noValidate: isHydrated,

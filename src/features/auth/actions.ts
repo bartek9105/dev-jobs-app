@@ -1,63 +1,75 @@
 "use server";
 
 import { isAuthApiError } from "@supabase/supabase-js";
-import { z } from "zod";
+import { redirect } from "next/navigation";
+import { ROUTES } from "@/config/routes";
+import { validatedAction } from "@/lib/forms/validated-action";
 import { createClient } from "@/lib/supabase/server";
-import {
-  signUpSchema,
-  type SignUpErrorKey,
-  type SignUpState,
-} from "./sign-up-schema";
+import type { AuthErrorKey } from "./auth-errors";
+import { signInSchema, type SignInState } from "./sign-in-schema";
+import { signUpSchema, type SignUpState } from "./sign-up-schema";
 
-const supabaseErrorKeys: Partial<Record<string, SignUpErrorKey>> = {
+const signUpErrorKeys: Partial<Record<string, AuthErrorKey>> = {
   weak_password: "weakPassword",
   email_address_invalid: "emailInvalid",
   over_email_send_rate_limit: "rateLimited",
   over_request_rate_limit: "rateLimited",
 };
 
+const signInErrorKeys: Partial<Record<string, AuthErrorKey>> = {
+  invalid_credentials: "invalidCredentials",
+  // Does reveal that the account exists, but a vague error here would leave real users
+  // stuck with no idea they need to confirm their email first.
+  email_not_confirmed: "emailNotConfirmed",
+  over_request_rate_limit: "rateLimited",
+};
+
+// Treated like success, so the form never reveals whether an email is already registered.
 const accountExistsCodes = new Set(["user_already_exists", "email_exists"]);
 
-export async function signUp(
-  _previousState: SignUpState,
-  formData: FormData,
-): Promise<SignUpState> {
-  const email = String(formData.get("email") ?? "");
-  const parsed = signUpSchema.safeParse({
-    email,
-    password: String(formData.get("password") ?? ""),
-  });
+export const signUp = validatedAction(
+  signUpSchema,
+  async (data): Promise<SignUpState> => {
+    const supabase = await createClient();
+    const { error } = await supabase.auth.signUp(data);
 
-  if (!parsed.success) {
-    return {
-      status: "error",
-      email,
-      fieldErrors: z.flattenError(parsed.error).fieldErrors as Partial<
-        Record<"email" | "password", SignUpErrorKey[]>
-      >,
-    };
-  }
+    if (
+      error &&
+      !(isAuthApiError(error) && accountExistsCodes.has(error.code ?? ""))
+    ) {
+      const known = isAuthApiError(error)
+        ? signUpErrorKeys[error.code ?? ""]
+        : undefined;
+      if (!known) console.error("Sign-up failed", error);
 
-  const supabase = await createClient();
-  const { error } = await supabase.auth.signUp(parsed.data);
+      return known === "weakPassword"
+        ? { status: "error", fieldErrors: { password: [known] } }
+        : { status: "error", formError: known ?? "generic" };
+    }
 
-  if (
-    error &&
-    !(isAuthApiError(error) && accountExistsCodes.has(error.code ?? ""))
-  ) {
-    const known = isAuthApiError(error)
-      ? supabaseErrorKeys[error.code ?? ""]
-      : undefined;
-    if (!known) console.error("Sign-up failed", error);
+    return { status: "success", email: data.email };
+  },
+);
 
-    return {
-      status: "error",
-      email: parsed.data.email,
-      ...(known === "weakPassword"
-        ? { fieldErrors: { password: [known] } }
-        : { formError: known ?? "generic" }),
-    };
-  }
+export const signIn = validatedAction(
+  signInSchema,
+  async (data): Promise<SignInState> => {
+    const supabase = await createClient();
+    const { error } = await supabase.auth.signInWithPassword(data);
 
-  return { status: "success", email: parsed.data.email };
-}
+    if (error) {
+      const known = isAuthApiError(error)
+        ? signInErrorKeys[error.code ?? ""]
+        : undefined;
+      if (!known) console.error("Sign-in failed", error);
+
+      // A form-level message, never "wrong password" on one field: pointing at a field
+      // would tell an attacker which part was right, i.e. that the email has an account.
+      return { status: "error", formError: known ?? "generic" };
+    }
+
+    // Outside any try/catch: redirect() works by throwing. The session cookies set above
+    // travel with this redirect, so the next page already renders signed in.
+    redirect(ROUTES.home);
+  },
+);

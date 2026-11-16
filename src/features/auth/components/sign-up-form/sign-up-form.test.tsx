@@ -2,11 +2,11 @@ import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { renderWithIntl } from "@/test/render-with-intl";
-import { signUp } from "../actions";
+import { signUp } from "../../actions";
 import { SignUpForm } from "./sign-up-form";
 
 // The form is tested against a fake action; the action itself has its own tests.
-vi.mock("../actions", () => ({ signUp: vi.fn() }));
+vi.mock("../../actions", () => ({ signUp: vi.fn() }));
 
 const action = vi.mocked(signUp);
 
@@ -31,7 +31,7 @@ describe("SignUpForm", () => {
 
     expect(action).not.toHaveBeenCalled();
     expect(email()).toHaveAccessibleDescription("Enter your email address");
-    expect(password()).toHaveAccessibleDescription(/Enter a password/);
+    expect(password()).toHaveAccessibleDescription(/Enter your password/);
     expect(email()).toHaveFocus();
   });
 
@@ -50,7 +50,6 @@ describe("SignUpForm", () => {
   it("shows a server-only error and clears it when the user edits the field", async () => {
     action.mockResolvedValue({
       status: "error",
-      email: "dev@example.com",
       fieldErrors: { password: ["weakPassword"] },
     });
     const { user, submit, email, password } = setup();
@@ -70,7 +69,6 @@ describe("SignUpForm", () => {
   it("shows a form-level error as an alert", async () => {
     action.mockResolvedValue({
       status: "error",
-      email: "dev@example.com",
       formError: "rateLimited",
     });
     const { user, submit, email, password } = setup();

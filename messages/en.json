@@ -8,13 +8,28 @@
     "passwordLabel": "Password",
     "passwordPlaceholder": "Enter your password"
   },
+  "AuthErrors": {
+    "emailRequired": "Enter your email address",
+    "emailInvalid": "Enter a valid email address",
+    "passwordRequired": "Enter your password",
+    "passwordTooShort": "Password must be at least 8 characters",
+    "passwordTooLong": "Password must be at most 72 characters",
+    "weakPassword": "This password is too easy to guess. Choose a stronger one.",
+    "invalidCredentials": "Incorrect email or password",
+    "emailNotConfirmed": "Confirm your email first. We sent you a link when you signed up.",
+    "rateLimited": "Too many attempts. Wait a moment and try again.",
+    "generic": "Something went wrong. Please try again."
+  },
   "SignInPage": {
     "title": "Sign in",
-    "forgotPassword": "Forgot password?",
-    "submit": "Sign in",
     "noAccount": "Don't have an account? <link>Sign up</link>",
     "or": "or",
     "google": "Sign in with Google"
+  },
+  "SignInForm": {
+    "submit": "Sign in",
+    "submitting": "Signing in…",
+    "forgotPassword": "Forgot password?"
   },
   "SignUpPage": {
     "title": "Sign up",
@@ -26,16 +41,6 @@
     "submit": "Sign up",
     "submitting": "Signing up…",
     "passwordHint": "At least 8 characters",
-    "errors": {
-      "emailRequired": "Enter your email address",
-      "emailInvalid": "Enter a valid email address",
-      "passwordRequired": "Enter a password",
-      "passwordTooShort": "Password must be at least 8 characters",
-      "passwordTooLong": "Password must be at most 72 characters",
-      "weakPassword": "This password is too easy to guess. Choose a stronger one.",
-      "rateLimited": "Too many attempts. Wait a moment and try again.",
-      "generic": "Something went wrong. Please try again."
-    },
     "success": {
       "title": "Check your email",
       "description": "We sent a confirmation link to <strong>{email}</strong>. Open it to finish signing up."

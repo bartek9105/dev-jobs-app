@@ -4,20 +4,22 @@ import { useTranslations } from "next-intl";
 import { TextField } from "@/components/form/text-field";
 import { Button } from "@/components/ui/button";
 import { useActionForm } from "@/lib/forms/use-action-form";
-import { signUp } from "../actions";
+import { signUp } from "../../actions";
+import type { AuthErrorKey } from "../../auth-errors";
 import {
   signUpSchema,
-  type SignUpErrorKey,
   type SignUpInput,
   type SignUpState,
-} from "../sign-up-schema";
+} from "../../sign-up-schema";
 
 const initialState: SignUpState = { status: "idle" };
 
 export function SignUpForm() {
   const t = useTranslations("SignUpForm");
   const tFields = useTranslations("AuthFields");
-  const { form, state, isPending, formProps } = useActionForm({
+  const tErrors = useTranslations("AuthErrors");
+
+  const { form, state, formError, isPending, formProps } = useActionForm({
     action: signUp,
     initialState,
     schema: signUpSchema,
@@ -44,8 +46,8 @@ export function SignUpForm() {
 
   const fieldError = (name: keyof SignUpInput) => {
     const key = form.formState.errors[name]?.message as
-      SignUpErrorKey | undefined;
-    return key ? [t(`errors.${key}`)] : undefined;
+      AuthErrorKey | undefined;
+    return key ? [tErrors(key)] : undefined;
   };
 
   return (
@@ -71,9 +73,9 @@ export function SignUpForm() {
           {...form.register("password")}
         />
       </div>
-      {state.status === "error" && state.formError && (
+      {formError && (
         <p role="alert" className="mb-4 text-sm text-destructive">
-          {t(`errors.${state.formError}`)}
+          {tErrors(formError)}
         </p>
       )}
       <Button type="submit" className="mb-6 w-full" disabled={isPending}>

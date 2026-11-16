@@ -1,12 +1,12 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
-import { TextField } from "@/components/form/text-field";
 import { Button } from "@/components/ui/button";
 import { FieldSeparator } from "@/components/ui/field";
 import { Heading } from "@/components/ui/heading";
 import { HintLink } from "@/components/ui/hint-link";
 import { ROUTES } from "@/config/routes";
+import { SignInForm } from "@/features/auth/components/sign-in-form/sign-in-form";
 
 export async function generateMetadata() {
   const t = await getTranslations("SignInPage");
@@ -15,35 +15,13 @@ export async function generateMetadata() {
 
 export default function SignInPage() {
   const t = useTranslations("SignInPage");
-  const tFields = useTranslations("AuthFields");
 
   return (
     <>
       <Heading level={1} variant="h1" className="mb-10">
         {t("title")}
       </Heading>
-      <div className="mb-6 flex w-full flex-col gap-6">
-        <TextField
-          type="email"
-          autoComplete="email"
-          label={tFields("emailLabel")}
-          name="email"
-          placeholder={tFields("emailPlaceholder")}
-        />
-        <TextField
-          type="password"
-          autoComplete="current-password"
-          label={tFields("passwordLabel")}
-          name="password"
-          placeholder={tFields("passwordPlaceholder")}
-          labelAction={
-            <HintLink href={ROUTES.forgotPassword}>
-              {t("forgotPassword")}
-            </HintLink>
-          }
-        />
-      </div>
-      <Button className="mb-6 w-full">{t("submit")}</Button>
+      <SignInForm />
 
       <p className="mb-6 text-sm font-medium text-muted-foreground">
         {t.rich("noAccount", {
