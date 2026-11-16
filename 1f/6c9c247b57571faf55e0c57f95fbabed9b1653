@@ -1,0 +1,53 @@
+src/features/auth/actions.ts
+  s_a12a88c110d108::t_8e963b9fe13a39 4
+  s_a12a88c110d108::t_fe751383639a65 79-83,90,92,98-100
+  s_a12a88c110d108::t_594440eb8e2a87 103-104
+  h_22d2fe95cfac76 12,78,84-89,91,93-97,101-102,105
+src/features/auth/components/google-sign-in-button/google-sign-in-button.tsx
+  s_a12a88c110d108::t_f5a7356543959c 1-41
+messages/en.json
+  s_a12a88c110d108::t_166cf99d9b31d7 27-28,39-40,52-54
+supabase/config.toml
+  h_22d2fe95cfac76 349-354
+src/app/auth/callback/route.ts
+  s_a12a88c110d108::t_8f0e6c5ee6cfcd 1-3,6-13,15-16,20-21,24
+  h_22d2fe95cfac76 4-5,14,17-19,22-23,25
+src/app/(auth)/sign-in/page.test.tsx
+  s_a12a88c110d108::t_09e00ff0bde99f 7-10
+src/app/auth/callback/route.test.ts
+  s_a12a88c110d108::t_366467747c2735 1-53,57-58
+  s_a12a88c110d108::t_fb66ed7f62a1e4 54-56
+src/config/routes.ts
+  s_a12a88c110d108::t_b02695207abe74 9
+src/app/(auth)/auth-error/page.tsx
+  s_a12a88c110d108::t_09e00ff0bde99f 21
+src/app/(auth)/sign-up/page.tsx
+  s_a12a88c110d108::t_166cf99d9b31d7 7,32-35
+src/features/auth/actions.test.ts
+  s_a12a88c110d108::t_fb66ed7f62a1e4 243-247
+  s_a12a88c110d108::t_47246c1a9beff1 3,7,12-16
+  s_a12a88c110d108::t_f223747c9f20e3 218-242,248-253
+src/app/(auth)/sign-in/page.tsx
+  s_a12a88c110d108::t_166cf99d9b31d7 7,33-36
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.10",
+  "base_commit_sha": "1f6c9c247b57571faf55e0c57f95fbabed9b1653",
+  "prompts": {},
+  "humans": {
+    "h_22d2fe95cfac76": {
+      "author": "Bartłomiej Matoga <bartek9105@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_a12a88c110d108": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7d935f63-7332-41a3-8d10-fe5ba42387a3",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Bartłomiej Matoga <bartek9105@gmail.com>"
+    }
+  }
+}
