@@ -1,0 +1,19 @@
+next.config.ts
+  s_a12a88c110d108::t_7d4fdd0874645a 12
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.10",
+  "base_commit_sha": "2c6fecc75af8a33761a1207455bfb87856a2189e",
+  "prompts": {},
+  "sessions": {
+    "s_a12a88c110d108": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7d935f63-7332-41a3-8d10-fe5ba42387a3",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Bartłomiej Matoga <bartek9105@gmail.com>"
+    }
+  }
+}
