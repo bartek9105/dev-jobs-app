@@ -1,6 +1,6 @@
 import { Logo } from "@/components/logo";
-import { SidePanel } from "./_components/side-panel";
 import type { PropsWithChildren } from "react";
+import { SidePanel } from "./_components/side-panel/side-panel";
 
 export default function AuthLayout({ children }: PropsWithChildren) {
   return (
