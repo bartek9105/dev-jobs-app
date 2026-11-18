@@ -1,0 +1,29 @@
+supabase/migrations/20261118174231_add_jobs_access_rules.sql
+  s_a12a88c110d108::t_ff6035b030907b 1-39,61-156,159-163,176-180,189,194-197
+  s_a12a88c110d108::t_5709d476046325 40-60,157-158,164-175,181-188,190-193,198-209
+supabase/migrations/20261118174230_create_jobs_schema.sql
+  s_a12a88c110d108::t_2356cf2c9b4792 1-171
+supabase/tests/database/jobs_access.test.sql
+  s_a12a88c110d108::t_3911407aaa5fa0 207-209,212
+  s_a12a88c110d108::t_7d25ac7f0ebf55 1-206,210-211,213-258
+package.json
+  s_a12a88c110d108::t_994f8e87c8cfb0 23
+src/lib/supabase/database.types.ts
+  s_a12a88c110d108::t_514795c3192ec0 37-328,337-342,472-479
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.10",
+  "base_commit_sha": "349937b39034b9f3480ad48828bb628b8bf8be73",
+  "prompts": {},
+  "sessions": {
+    "s_a12a88c110d108": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7d935f63-7332-41a3-8d10-fe5ba42387a3",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Bartłomiej Matoga <bartek9105@gmail.com>"
+    }
+  }
+}
