@@ -34,7 +34,298 @@ export type Database = {
   };
   public: {
     Tables: {
-      [_ in never]: never;
+      categories: {
+        Row: {
+          id: string;
+          name: string;
+          slug: string;
+        };
+        ComputedFields: never;
+        Insert: {
+          id?: string;
+          name: string;
+          slug: string;
+        };
+        Update: {
+          id?: string;
+          name?: string;
+          slug?: string;
+        };
+        Relationships: [];
+      };
+      cities: {
+        Row: {
+          id: string;
+          name: string;
+          slug: string;
+        };
+        ComputedFields: never;
+        Insert: {
+          id?: string;
+          name: string;
+          slug: string;
+        };
+        Update: {
+          id?: string;
+          name?: string;
+          slug?: string;
+        };
+        Relationships: [];
+      };
+      companies: {
+        Row: {
+          created_at: string;
+          description: string;
+          id: string;
+          logo_path: string | null;
+          name: string;
+          slug: string;
+          updated_at: string;
+          website: string | null;
+        };
+        ComputedFields: never;
+        Insert: {
+          created_at?: string;
+          description?: string;
+          id?: string;
+          logo_path?: string | null;
+          name: string;
+          slug: string;
+          updated_at?: string;
+          website?: string | null;
+        };
+        Update: {
+          created_at?: string;
+          description?: string;
+          id?: string;
+          logo_path?: string | null;
+          name?: string;
+          slug?: string;
+          updated_at?: string;
+          website?: string | null;
+        };
+        Relationships: [];
+      };
+      company_members: {
+        Row: {
+          company_id: string;
+          created_at: string;
+          role: Database["public"]["Enums"]["company_role"];
+          user_id: string;
+        };
+        ComputedFields: never;
+        Insert: {
+          company_id: string;
+          created_at?: string;
+          role?: Database["public"]["Enums"]["company_role"];
+          user_id: string;
+        };
+        Update: {
+          company_id?: string;
+          created_at?: string;
+          role?: Database["public"]["Enums"]["company_role"];
+          user_id?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "company_members_company_id_fkey";
+            columns: ["company_id"];
+            isOneToOne: false;
+            referencedRelation: "companies";
+            referencedColumns: ["id"];
+          },
+        ];
+      };
+      offer_locations: {
+        Row: {
+          city_id: string;
+          offer_id: string;
+        };
+        ComputedFields: never;
+        Insert: {
+          city_id: string;
+          offer_id: string;
+        };
+        Update: {
+          city_id?: string;
+          offer_id?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "offer_locations_city_id_fkey";
+            columns: ["city_id"];
+            isOneToOne: false;
+            referencedRelation: "cities";
+            referencedColumns: ["id"];
+          },
+          {
+            foreignKeyName: "offer_locations_offer_id_fkey";
+            columns: ["offer_id"];
+            isOneToOne: false;
+            referencedRelation: "offers";
+            referencedColumns: ["id"];
+          },
+        ];
+      };
+      offer_salaries: {
+        Row: {
+          currency: string;
+          employment_type: Database["public"]["Enums"]["employment_type"];
+          max_amount: number;
+          min_amount: number;
+          offer_id: string;
+          period: Database["public"]["Enums"]["salary_period"];
+        };
+        ComputedFields: never;
+        Insert: {
+          currency?: string;
+          employment_type: Database["public"]["Enums"]["employment_type"];
+          max_amount: number;
+          min_amount: number;
+          offer_id: string;
+          period?: Database["public"]["Enums"]["salary_period"];
+        };
+        Update: {
+          currency?: string;
+          employment_type?: Database["public"]["Enums"]["employment_type"];
+          max_amount?: number;
+          min_amount?: number;
+          offer_id?: string;
+          period?: Database["public"]["Enums"]["salary_period"];
+        };
+        Relationships: [
+          {
+            foreignKeyName: "offer_salaries_offer_id_fkey";
+            columns: ["offer_id"];
+            isOneToOne: false;
+            referencedRelation: "offers";
+            referencedColumns: ["id"];
+          },
+        ];
+      };
+      offer_skills: {
+        Row: {
+          level: number;
+          offer_id: string;
+          required: boolean;
+          skill_id: string;
+        };
+        ComputedFields: never;
+        Insert: {
+          level: number;
+          offer_id: string;
+          required?: boolean;
+          skill_id: string;
+        };
+        Update: {
+          level?: number;
+          offer_id?: string;
+          required?: boolean;
+          skill_id?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "offer_skills_offer_id_fkey";
+            columns: ["offer_id"];
+            isOneToOne: false;
+            referencedRelation: "offers";
+            referencedColumns: ["id"];
+          },
+          {
+            foreignKeyName: "offer_skills_skill_id_fkey";
+            columns: ["skill_id"];
+            isOneToOne: false;
+            referencedRelation: "skills";
+            referencedColumns: ["id"];
+          },
+        ];
+      };
+      offers: {
+        Row: {
+          apply_url: string;
+          category_id: string;
+          company_id: string;
+          created_at: string;
+          description: string;
+          expires_at: string | null;
+          id: string;
+          published_at: string | null;
+          seniority: Database["public"]["Enums"]["seniority"];
+          slug: string;
+          status: Database["public"]["Enums"]["offer_status"];
+          title: string;
+          updated_at: string;
+          workplace: Database["public"]["Enums"]["workplace"];
+        };
+        ComputedFields: never;
+        Insert: {
+          apply_url: string;
+          category_id: string;
+          company_id: string;
+          created_at?: string;
+          description?: string;
+          expires_at?: string | null;
+          id?: string;
+          published_at?: string | null;
+          seniority: Database["public"]["Enums"]["seniority"];
+          slug: string;
+          status?: Database["public"]["Enums"]["offer_status"];
+          title: string;
+          updated_at?: string;
+          workplace: Database["public"]["Enums"]["workplace"];
+        };
+        Update: {
+          apply_url?: string;
+          category_id?: string;
+          company_id?: string;
+          created_at?: string;
+          description?: string;
+          expires_at?: string | null;
+          id?: string;
+          published_at?: string | null;
+          seniority?: Database["public"]["Enums"]["seniority"];
+          slug?: string;
+          status?: Database["public"]["Enums"]["offer_status"];
+          title?: string;
+          updated_at?: string;
+          workplace?: Database["public"]["Enums"]["workplace"];
+        };
+        Relationships: [
+          {
+            foreignKeyName: "offers_category_id_fkey";
+            columns: ["category_id"];
+            isOneToOne: false;
+            referencedRelation: "categories";
+            referencedColumns: ["id"];
+          },
+          {
+            foreignKeyName: "offers_company_id_fkey";
+            columns: ["company_id"];
+            isOneToOne: false;
+            referencedRelation: "companies";
+            referencedColumns: ["id"];
+          },
+        ];
+      };
+      skills: {
+        Row: {
+          id: string;
+          name: string;
+          slug: string;
+        };
+        ComputedFields: never;
+        Insert: {
+          id?: string;
+          name: string;
+          slug: string;
+        };
+        Update: {
+          id?: string;
+          name?: string;
+          slug?: string;
+        };
+        Relationships: [];
+      };
     };
     Views: {
       [_ in never]: never;
@@ -43,7 +334,12 @@ export type Database = {
       [_ in never]: never;
     };
     Enums: {
-      [_ in never]: never;
+      company_role: "owner" | "recruiter";
+      employment_type: "b2b" | "permanent" | "mandate";
+      offer_status: "draft" | "published" | "closed";
+      salary_period: "month" | "hour";
+      seniority: "intern" | "junior" | "mid" | "senior" | "lead";
+      workplace: "remote" | "hybrid" | "office";
     };
     CompositeTypes: {
       [_ in never]: never;
@@ -173,6 +469,13 @@ export const Constants = {
     Enums: {},
   },
   public: {
-    Enums: {},
+    Enums: {
+      company_role: ["owner", "recruiter"],
+      employment_type: ["b2b", "permanent", "mandate"],
+      offer_status: ["draft", "published", "closed"],
+      salary_period: ["month", "hour"],
+      seniority: ["intern", "junior", "mid", "senior", "lead"],
+      workplace: ["remote", "hybrid", "office"],
+    },
   },
 } as const;
