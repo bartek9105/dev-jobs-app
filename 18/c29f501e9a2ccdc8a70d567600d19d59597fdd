@@ -1,0 +1,41 @@
+src/app/(auth)/sign-in/page.tsx
+  s_a12a88c110d108::t_1e769bd6f4f8b2 8,19-33,35
+src/app/(auth)/_components/side-panel/side-panel.tsx
+  h_22d2fe95cfac76 1-48
+src/app/(auth)/_components/auth-page-shell/auth-page-shell.test.tsx
+  s_a12a88c110d108::t_76eb010e3b77db 1-32
+src/app/(auth)/sign-up/page.tsx
+  s_a12a88c110d108::t_1582180c68b724 8,19-33,35
+src/features/auth/components/sign-in-form/sign-in-form.tsx
+  s_a12a88c110d108::t_5477b42acf08db 69
+src/app/(auth)/_components/auth-page-shell/auth-page-shell.tsx
+  s_a12a88c110d108::t_277330ba3e49ef 1-45
+src/features/auth/components/sign-up-form/sign-up-form.tsx
+  s_a12a88c110d108::t_5477b42acf08db 31,81
+src/app/(auth)/layout.tsx
+  h_22d2fe95cfac76 3
+src/app/(auth)/auth-error/page.tsx
+  h_22d2fe95cfac76 17-19
+  s_a12a88c110d108::t_a9472df419af07 5,16
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.10",
+  "base_commit_sha": "18c29f501e9a2ccdc8a70d567600d19d59597fdd",
+  "prompts": {},
+  "humans": {
+    "h_22d2fe95cfac76": {
+      "author": "Bartłomiej Matoga <bartek9105@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_a12a88c110d108": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7d935f63-7332-41a3-8d10-fe5ba42387a3",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Bartłomiej Matoga <bartek9105@gmail.com>"
+    }
+  }
+}
