@@ -41,9 +41,21 @@ describe("GET /auth/confirm", () => {
     );
   });
 
-  it("rejects other token types without verifying them", async () => {
+  it("sends password reset links to the set-new-password page", async () => {
+    verifyOtp.mockResolvedValue({ error: null });
+
     await expect(confirm("token_hash=abc&type=recovery")).rejects.toThrow(
-      "REDIRECT /auth-error",
+      /^REDIRECT \/update-password$/,
+    );
+    expect(verifyOtp).toHaveBeenCalledWith({
+      type: "recovery",
+      token_hash: "abc",
+    });
+  });
+
+  it("rejects token types without a destination, without verifying them", async () => {
+    await expect(confirm("token_hash=abc&type=invite")).rejects.toThrow(
+      /^REDIRECT \/auth-error$/,
     );
     expect(verifyOtp).not.toHaveBeenCalled();
   });
@@ -54,5 +66,8 @@ describe("GET /auth/confirm", () => {
     await expect(
       confirm("token_hash=abc&type=email&next=https://evil.example"),
     ).rejects.toThrow(/^REDIRECT \/$/);
+    await expect(
+      confirm("token_hash=abc&type=recovery&next=https://evil.example"),
+    ).rejects.toThrow(/^REDIRECT \/update-password$/);
   });
 });

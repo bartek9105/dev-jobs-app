@@ -18,7 +18,9 @@
     "invalidCredentials": "Incorrect email or password",
     "emailNotConfirmed": "Confirm your email first. We sent you a link when you signed up.",
     "rateLimited": "Too many attempts. Wait a moment and try again.",
-    "generic": "Something went wrong. Please try again."
+    "generic": "Something went wrong. Please try again.",
+    "samePassword": "Your new password must be different from your current one.",
+    "sessionExpired": "Your reset link has expired. Request a new one."
   },
   "SignInPage": {
     "title": "Sign in",
@@ -54,7 +56,27 @@
     "action": "Back to sign in"
   },
   "ForgotPasswordPage": {
-    "title": "Forgot password"
+    "title": "Forgot password",
+    "description": "Enter your email and we’ll send you a link to reset your password.",
+    "backToSignIn": "Remembered it? <link>Sign in</link>"
+  },
+  "ForgotPasswordForm": {
+    "submit": "Send reset link",
+    "submitting": "Sending…",
+    "success": {
+      "title": "Check your email",
+      "description": "If an account exists for <strong>{email}</strong>, we’ve sent a link to reset your password."
+    }
+  },
+  "UpdatePasswordPage": {
+    "title": "Set a new password"
+  },
+  "UpdatePasswordForm": {
+    "passwordLabel": "New password",
+    "passwordPlaceholder": "Enter a new password",
+    "passwordHint": "At least 8 characters",
+    "submit": "Update password",
+    "submitting": "Updating…"
   },
   "PasswordInput": {
     "show": "Show password"

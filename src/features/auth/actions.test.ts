@@ -1,10 +1,19 @@
 import { AuthApiError } from "@supabase/supabase-js";
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import { signIn, signInWithGoogle, signUp } from "./actions";
+import {
+  requestPasswordReset,
+  signIn,
+  signInWithGoogle,
+  signUp,
+  updatePassword,
+} from "./actions";
 
 const supabaseSignUp = vi.fn();
 const supabaseSignIn = vi.fn();
 const supabaseSignInWithOAuth = vi.fn();
+const supabaseResetPasswordForEmail = vi.fn();
+const supabaseUpdateUser = vi.fn();
+const currentUser = vi.fn();
 
 // The real server client reads Next's request cookies; here we only need its auth API.
 vi.mock("@/lib/supabase/server", () => ({
@@ -13,8 +22,14 @@ vi.mock("@/lib/supabase/server", () => ({
       signUp: supabaseSignUp,
       signInWithPassword: supabaseSignIn,
       signInWithOAuth: supabaseSignInWithOAuth,
+      resetPasswordForEmail: supabaseResetPasswordForEmail,
+      updateUser: supabaseUpdateUser,
     },
   }),
+}));
+
+vi.mock("@/lib/auth/current-user", () => ({
+  getCurrentUser: () => currentUser(),
 }));
 
 // Next's redirect() throws to end the action; capture where it was sent instead.
@@ -249,5 +264,128 @@ describe("signInWithGoogle action", () => {
 
     await expect(signInWithGoogle()).rejects.toThrow(/^REDIRECT \/auth-error$/);
     expect(console.error).toHaveBeenCalled();
+  });
+});
+
+describe("requestPasswordReset action", () => {
+  beforeEach(() => {
+    supabaseResetPasswordForEmail.mockReset();
+    vi.spyOn(console, "error").mockImplementation(() => {});
+  });
+
+  it("emails a reset link and reports success", async () => {
+    supabaseResetPasswordForEmail.mockResolvedValue({ data: {}, error: null });
+
+    const state = await requestPasswordReset(
+      idle,
+      formData({ email: " dev@example.com " }),
+    );
+
+    expect(supabaseResetPasswordForEmail).toHaveBeenCalledWith(
+      "dev@example.com",
+    );
+    expect(state).toEqual({ status: "success", email: "dev@example.com" });
+  });
+
+  it("asks the user to wait when resets are rate limited", async () => {
+    supabaseResetPasswordForEmail.mockResolvedValue({
+      data: {},
+      error: new AuthApiError(
+        "For security purposes, you can only request this after 60 seconds.",
+        429,
+        "over_email_send_rate_limit",
+      ),
+    });
+
+    const state = await requestPasswordReset(
+      idle,
+      formData({ email: "dev@example.com" }),
+    );
+
+    expect(state).toEqual({ status: "error", formError: "rateLimited" });
+    expect(console.error).not.toHaveBeenCalled();
+  });
+});
+
+describe("updatePassword action", () => {
+  // Built per test run so it stays inside the reset window.
+  const resetSession = {
+    id: "user-1",
+    lastSignIn: { method: "otp", timestamp: Date.now() / 1000 },
+  };
+
+  beforeEach(() => {
+    supabaseUpdateUser.mockReset();
+    currentUser.mockReset();
+    vi.spyOn(console, "error").mockImplementation(() => {});
+  });
+
+  it("refuses without a session, even with a valid password", async () => {
+    currentUser.mockResolvedValue(null);
+
+    const state = await updatePassword(
+      idle,
+      formData({ password: "brand-new-password" }),
+    );
+
+    expect(state).toEqual({ status: "error", formError: "sessionExpired" });
+    expect(supabaseUpdateUser).not.toHaveBeenCalled();
+  });
+
+  it("refuses an ordinary signed-in session, which didn't come from a reset link", async () => {
+    currentUser.mockResolvedValue({
+      id: "user-1",
+      lastSignIn: { method: "password", timestamp: Date.now() / 1000 },
+    });
+
+    const state = await updatePassword(
+      idle,
+      formData({ password: "brand-new-password" }),
+    );
+
+    expect(state).toEqual({ status: "error", formError: "sessionExpired" });
+    expect(supabaseUpdateUser).not.toHaveBeenCalled();
+  });
+
+  it("applies the sign-up password rules", async () => {
+    currentUser.mockResolvedValue(resetSession);
+
+    const state = await updatePassword(idle, formData({ password: "short" }));
+
+    expect(state).toEqual({
+      status: "error",
+      fieldErrors: { password: ["passwordTooShort"] },
+    });
+    expect(supabaseUpdateUser).not.toHaveBeenCalled();
+  });
+
+  it("updates the password and sends the user home", async () => {
+    currentUser.mockResolvedValue(resetSession);
+    supabaseUpdateUser.mockResolvedValue({ data: {}, error: null });
+
+    await expect(
+      updatePassword(idle, formData({ password: "brand-new-password" })),
+    ).rejects.toThrow(/^REDIRECT \/$/);
+    expect(supabaseUpdateUser).toHaveBeenCalledWith({
+      password: "brand-new-password",
+    });
+  });
+
+  it("shows reusing the current password as a field error", async () => {
+    currentUser.mockResolvedValue(resetSession);
+    supabaseUpdateUser.mockResolvedValue({
+      data: {},
+      error: new AuthApiError("Same password", 422, "same_password"),
+    });
+
+    const state = await updatePassword(
+      idle,
+      formData({ password: "brand-new-password" }),
+    );
+
+    expect(state).toEqual({
+      status: "error",
+      fieldErrors: { password: ["samePassword"] },
+    });
   });
 });

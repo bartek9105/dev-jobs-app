@@ -7,4 +7,5 @@ export const ROUTES = {
   forgotPassword: "/forgot-password",
   authError: "/auth-error",
   authCallback: "/auth/callback",
+  updatePassword: "/update-password",
 } as const satisfies Record<string, Route>;
