@@ -1,18 +1,11 @@
 import { z } from "zod";
-import {
-  authError,
-  requiredAuthError,
-  type AuthFormError,
-} from "./auth-errors";
+import { authError, type AuthFormError } from "./auth-errors";
+import { emailField } from "./auth-fields";
 
 // Only "is it filled in" for the password: sign-in must keep working for accounts created
 // under older or different password rules, and shouldn't hint at what those rules are.
 export const signInSchema = z.object({
-  email: z
-    .string()
-    .trim()
-    .min(1, requiredAuthError("emailRequired"))
-    .pipe(z.email(authError("emailInvalid"))),
+  email: emailField,
   password: z.string().min(1, authError("passwordRequired")),
 });
 

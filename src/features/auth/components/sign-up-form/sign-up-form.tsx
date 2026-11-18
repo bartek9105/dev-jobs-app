@@ -28,7 +28,7 @@ export function SignUpForm() {
 
   if (state.status === "success") {
     return (
-      <div role="status" className="mb-6 flex flex-col gap-2">
+      <div role="status" className="flex flex-col gap-2">
         <p className="font-semibold text-heading">{t("success.title")}</p>
         <p className="text-sm text-muted-foreground">
           {t.rich("success.description", {
@@ -78,7 +78,7 @@ export function SignUpForm() {
           {tErrors(formError)}
         </p>
       )}
-      <Button type="submit" className="mb-6 w-full" disabled={isPending}>
+      <Button type="submit" className="w-full" disabled={isPending}>
         {isPending ? t("submitting") : t("submit")}
       </Button>
     </form>

@@ -66,7 +66,7 @@ export function SignInForm() {
           {tErrors(formError)}
         </p>
       )}
-      <Button type="submit" className="mb-6 w-full" disabled={isPending}>
+      <Button type="submit" className="w-full" disabled={isPending}>
         {isPending ? t("submitting") : t("submit")}
       </Button>
     </form>
