@@ -83,5 +83,29 @@
   },
   "SidePanel": {
     "pauseAnimation": "Pause animation"
+  },
+  "HomePage": {
+    "latestOffers": "Latest offers"
+  },
+  "OfferList": {
+    "empty": "No offers yet. Check back soon."
+  },
+  "ErrorPage": {
+    "title": "Something went wrong",
+    "description": "We couldn’t load this page. Try again in a moment.",
+    "retry": "Try again"
+  },
+  "Offer": {
+    "employmentType": {
+      "b2b": "B2B",
+      "permanent": "Permanent",
+      "mandate": "Mandate contract"
+    },
+    "period": {
+      "month": "/ month",
+      "hour": "/ hour"
+    },
+    "allOffers": "All offers",
+    "apply": "Apply"
   }
 }

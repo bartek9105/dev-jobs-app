@@ -1,6 +1,8 @@
 -- Access rules for the job board tables, tested the way the API uses them: switch to the
 -- `anon` or `authenticated` role (with a user id in the JWT claims) and try things.
 -- Everything runs in one transaction that's rolled back, so the database is left untouched.
+-- Queries are scoped to the fixtures below (ids starting a0000000-/b0000000-), so the tests
+-- pass with or without seed data in the database.
 -- Run with: npm run db:test
 
 begin;
@@ -16,7 +18,7 @@ insert into auth.users (id, email) values
   ('00000000-0000-0000-0000-00000000000b', 'outsider@example.test');
 
 insert into public.categories (id, slug, name) values
-  ('c0000000-0000-0000-0000-000000000001', 'frontend', 'Frontend');
+  ('c0000000-0000-0000-0000-000000000001', 'test-category', 'Test category');
 
 insert into public.companies (id, slug, name) values
   ('a0000000-0000-0000-0000-000000000000', 'company-a', 'Company A'),
@@ -79,19 +81,23 @@ select throws_ok(
 set local role anon;
 
 select set_eq(
-  'select id from public.offers',
+  $$ select id from public.offers
+     where company_id in ('a0000000-0000-0000-0000-000000000000', 'b0000000-0000-0000-0000-000000000000') $$,
   array['a0000000-0000-0000-0000-000000000001', 'b0000000-0000-0000-0000-000000000001']::uuid[],
   'visitors see only live offers: no drafts, expired or not-yet-published ones'
 );
 
 select set_eq(
-  'select offer_id from public.offer_salaries',
+  $$ select offer_id from public.offer_salaries
+     where offer_id::text like any (array['a0000000-%', 'b0000000-%']) $$,
   array['a0000000-0000-0000-0000-000000000001']::uuid[],
   'visitors see salaries only of live offers'
 );
 
 select is(
-  (select count(*)::int from public.companies), 2,
+  (select count(*)::int from public.companies
+   where id in ('a0000000-0000-0000-0000-000000000000', 'b0000000-0000-0000-0000-000000000000')),
+  2,
   'visitors can read companies'
 );
 
@@ -124,7 +130,8 @@ select set_config(
 set local role authenticated;
 
 select set_eq(
-  'select id from public.offers',
+  $$ select id from public.offers
+     where company_id in ('a0000000-0000-0000-0000-000000000000', 'b0000000-0000-0000-0000-000000000000') $$,
   array['a0000000-0000-0000-0000-000000000001', 'b0000000-0000-0000-0000-000000000001']::uuid[],
   'a user outside a company sees only live offers'
 );
@@ -162,7 +169,8 @@ select set_config(
 set local role authenticated;
 
 select set_eq(
-  'select id from public.offers',
+  $$ select id from public.offers
+     where company_id in ('a0000000-0000-0000-0000-000000000000', 'b0000000-0000-0000-0000-000000000000') $$,
   array[
     'a0000000-0000-0000-0000-000000000001', 'a0000000-0000-0000-0000-000000000002',
     'a0000000-0000-0000-0000-000000000003', 'a0000000-0000-0000-0000-000000000004',
@@ -172,7 +180,8 @@ select set_eq(
 );
 
 select set_eq(
-  'select offer_id from public.offer_salaries',
+  $$ select offer_id from public.offer_salaries
+     where offer_id::text like any (array['a0000000-%', 'b0000000-%']) $$,
   array['a0000000-0000-0000-0000-000000000001', 'a0000000-0000-0000-0000-000000000002']::uuid[],
   'a member sees their drafts'' salaries, but not another company''s'
 );

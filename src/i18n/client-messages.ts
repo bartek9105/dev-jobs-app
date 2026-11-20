@@ -12,6 +12,7 @@ export const CLIENT_NAMESPACES = [
   "SignUpForm",
   "ForgotPasswordForm",
   "UpdatePasswordForm",
+  "ErrorPage",
 ] as const satisfies ReadonlyArray<keyof Messages>;
 
 export function pickClientMessages(messages: Messages) {
