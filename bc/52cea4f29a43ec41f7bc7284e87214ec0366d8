@@ -1,0 +1,29 @@
+supabase/seed.sql
+  s_a12a88c110d108::t_6c966716fa381f 115-118
+  s_a12a88c110d108::t_8bbec31918889f 373-375
+  s_a12a88c110d108::t_e9a36453cb4c81 235
+  s_a12a88c110d108::t_5c340f2a492347 1-114,119-234,236-372,376-432
+supabase/tests/database/jobs_access.test.sql
+  s_a12a88c110d108::t_25735f0472afbc 4-5,21,84-85,91-92,98-100,133-134,172-173,183-184
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.10",
+  "base_commit_sha": "bc52cea4f29a43ec41f7bc7284e87214ec0366d8",
+  "prompts": {},
+  "humans": {
+    "h_22d2fe95cfac76": {
+      "author": "Bartłomiej Matoga <bartek9105@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_a12a88c110d108": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7d935f63-7332-41a3-8d10-fe5ba42387a3",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Bartłomiej Matoga <bartek9105@gmail.com>"
+    }
+  }
+}
