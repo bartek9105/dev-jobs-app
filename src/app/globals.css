@@ -51,6 +51,9 @@
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
   --color-heading: var(--heading);
+  --color-success: var(--success);
+  --color-success-strong: var(--success-strong);
+  --color-primary-subtle: var(--primary-subtle);
 }
 
 /* Typography scale from Figma. Each token sets size, line height and weight together,
@@ -62,6 +65,11 @@
   --text-heading-2: 1.125rem; /* 18px */
   --text-heading-2--line-height: 1.375rem; /* 22px */
   --text-heading-2--font-weight: 600;
+}
+
+/* Shadows from Figma: `shadow-card`. Register new ones in lib/utils.ts too. */
+@theme {
+  --shadow-card: 3px 4px 15px rgba(0, 0, 0, 0.04);
 }
 
 /* inline: each bubble sets these --bubble-* variables itself. As a normal theme token this
@@ -100,6 +108,10 @@
   /* Figma uses #ff005c (3.9:1 with white text); darkened to pass WCAG AA 4.5:1. */
   --primary: #e60053;
   --primary-foreground: #ffffff;
+  /* Light pink background for tags, highlights and selected states (Figma #fff1f6).
+     Text on it: heading 14.9:1 and label 6.9:1 pass anywhere; primary is 4.3:1 and
+     muted-foreground 4.2:1, so only for large text (WCAG AA needs 4.5:1 below 24px). */
+  --primary-subtle: #fff1f6;
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
   --muted: oklch(0.97 0 0);
@@ -116,6 +128,11 @@
   /* Figma: rgba(74, 85, 104, 0.85), i.e. --label at 85%, stored solid; 5.1:1 on white. */
   --outline-foreground: #656f7f;
   --separator: #e2e8f0;
+  /* From Figma. Only 2.7:1 on white: below WCAG AA for text (4.5:1) and for icons or
+     large text (3:1). For green text, #0a8300 (4.9:1) is the nearest passing shade. */
+  --success: #0fb600;
+  /* The same green, darkened for text: 4.9:1 on white passes WCAG AA. Use for salaries. */
+  --success-strong: #0a8300;
   /* Focus indicators need 3:1 against the page; primary gives 4.7:1 at full opacity. */
   --ring: var(--primary);
   --chart-1: oklch(0.87 0 0);
